@@ -30,13 +30,13 @@ for uuid, ip in hosts.items():
     response = requests.get(url, json=payload, headers=headers, auth=auth,verify=False)
     nics = response.json()
 
-    print(f"===============[ {ip} ]===============")
+    print(f"==================[ {ip} ]==================")
 
     for nic in nics:
-        nic_name=nic["name"]
-        TOR_sw_name=nic["switch_device_id"]
-        TOR_sw_port=nic["switch_port_id"]
-        print(f"{nic_name}\t{TOR_sw_name}\t{TOR_sw_port}")
+        nic_name=str(nic["name"])
+        TOR_sw_name=str(nic["switch_device_id"])
+        TOR_sw_port=str(nic["switch_port_id"])
+        print(f"{nic_name.ljust(10)}{TOR_sw_name.ljust(25)}{TOR_sw_port}")
         
     
     
